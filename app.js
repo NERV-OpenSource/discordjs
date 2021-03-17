@@ -102,13 +102,17 @@ client.on('message', message => {
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
           if (!user.bot) {
-            message.channel.send("Added reaction");
+            let githubTeamRole = message.guild.roles.cache.find(role => role.name === "Github Team")
+            const dUser = message.guild.members.cache.get(user.id);
+            dUser.roles.add(githubTeamRole).catch(console.error);
           }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
           if (!user.bot) {
-            message.channel.send("Removed reaction");
+            let githubTeamRole = message.guild.roles.cache.find(role => role.name === "Github Team")
+            const dUser = message.guild.members.cache.get(user.id);
+            dUser.roles.remove(githubTeamRole).catch(console.error);
           }
         });
       });
