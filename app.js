@@ -94,7 +94,6 @@ client.on('message', message => {
         emojiText += `${key} = ${role}\n`
       }
 
-      let messageReactionId;
       message.channel.send(emojiText).then((message) => {
         message.react("👍");
         message.react("👎");
@@ -102,11 +101,15 @@ client.on('message', message => {
         const messageClient = message.client;
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
-          message.channel.send("Added reaction");
+          if (!user.bot) {
+            message.channel.send("Added reaction");
+          }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
-          message.channel.send("Removed reaction");
+          if (!user.bot) {
+            message.channel.send("Removed reaction");
+          }
         });
       });
 
