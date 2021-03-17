@@ -94,19 +94,20 @@ client.on('message', message => {
         emojiText += `${key} = ${role}\n`
       }
 
+      let messageReactionId;
       message.channel.send(emojiText).then((message) => {
         message.react("👍");
         message.react("👎");
 
-        const collector = message.createReactionCollector(filter, { time: 15000 });
+        const messageClient = message.client;
 
-        collector.on('collect', (reaction, user) => {
-          console.log(`Reação ${reaction.emoji.name} feita por ${user.tag}`);
+        messageClient.on('messageReactionAdd', (reaction, user) => {
+          message.channel.send("Added reaction");
         });
 
-        collector.on('end', collected => {
-          console.log(`${collected.size} reações foram dadas`);
-        })
+        messageClient.on('messageReactionRemove', (reaction, user) => {
+          message.channel.send("Removed reaction");
+        });
       });
 
 
