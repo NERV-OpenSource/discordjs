@@ -34,7 +34,11 @@ client.on('message', message => {
     }
 
     voice.channel.join().then(async (connection) => {
+      try {
       connection.play(await ytdl(arguments[0]), { type: 'opus' });
+      } catch (ex) {
+        message.reply("Erro ao reproduzir mídia");
+      }
     });
   }
 
