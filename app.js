@@ -93,7 +93,10 @@ client.on('message', message => {
       emojiText += `${key} = ${role}\n`
     }
 
-    message.channel.send(emojiText);
+    message.channel.send(emojiText).then((message) => {
+      message.react(':thumbsup:');
+      message.react(':thumbsdown:');
+    });
   }
 })
 
