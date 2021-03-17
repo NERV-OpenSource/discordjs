@@ -21,9 +21,15 @@ client.on('message', message => {
 
   if (command === "play") {
     const voice = message.member.voice;
+    const URL = arguments[0];
 
     if (!voice.channelID) {
       message.reply("É preciso estar em um canal de voz para utilizar esse comando.");
+      return;
+    }
+
+    if (!URL) {
+      message.reply("É preciso enviar a URL do vídeo para ser reproduzido");
       return;
     }
 
