@@ -9,7 +9,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
   const prefix = process.env.PREFIX;
-  if (!message.content.startWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const arguments = message.content.slice(prefix.length).trim().split(' ');
   const command = args.shift().toLowerCase();
