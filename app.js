@@ -528,6 +528,18 @@ client.on('message', message => {
 
 
     }
+
+    if (command == "help") {
+      message.reply(""+
+        "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source\n"+
+        "Estes são os meus comandos no momento: "+
+        "```"+
+        "!play <url youtube>: Reprodiz o audio do vídeo requisitado no canal de voz" +
+        "!stop: Para o reprodução e saí do canal de voz" +
+        "!roles: Verifica e pega cargos no servidor" +
+        +"```"
+      "")
+    }
   } catch (ex) {
     message.reply("Ocorreu um erro interno, por favor relate isso aos moderadores.");
   }
