@@ -98,18 +98,14 @@ client.on('message', message => {
         message.react("👍");
         message.react("👎");
 
-        message.awaitReactions(filter, { max: 1, time: 60000 }).then(collected => {
-          const reaction = collected.first();
-  
-          if (reaction.emoji.name === "👍") {
-            message.channel.send('Thumbsup');
-          } else {
-            message.channel.send("Thumbsdown");
-          }
+        const collector = message.createReactionCollector(filter);
+
+        collector.on('collect', (reaction, user) => {
+          console.log(`Reação ${reaction.emoji.name} feita por ${user.tag}`);
         })
       });
 
-      
+
     }
   } catch (ex) {
     message.reply("Ocorreu um erro interno, por favor relate isso aos moderadores.");
