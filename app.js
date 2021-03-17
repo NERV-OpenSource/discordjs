@@ -79,8 +79,8 @@ client.on('message', message => {
     const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === emojiName);
 
     const emojis = {
-      thumbsup: 'Thumbs Up',
-      thumbsdown: 'Thumbs Down',
+      ":thumbsup:": 'Thumbs Up',
+      ":thumbsdown:": 'Thumbs Down',
     };
 
     const reactions = [];
