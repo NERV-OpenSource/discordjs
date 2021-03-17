@@ -87,11 +87,10 @@ client.on('message', message => {
 
     let emojiText = '';
     for (const key in emojis) {
-      const emoji = client.emojis.cache.find(emojeC => emojeC.name === key);
       reactions.push(emoji);
 
       const role = emojis[key];
-      emojiText += `${emoji} = ${role}\n`
+      emojiText += `${key} = ${role}\n`
     }
 
     message.channel.send(emojiText);
