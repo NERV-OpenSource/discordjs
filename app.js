@@ -89,11 +89,13 @@ client.on('message', message => {
         ":red_circle:": 'Kotlin',
         ":white_circle:": 'Rust',
         ":yellow_circle:": 'Haskell',
-        ":blue_square": 'Lua',
+        ":blue_square:": 'Lua',
         ":brown_square:": 'Assembly',
         ":green_square:": 'GO-lang',
         ":orange_square:": 'Ruby',
         ":purple_square:": 'Elixir',
+        ":grinning:": 'C-lang',
+        ":grin:": 'Elixir'
       };
 
       const reactions = [];
@@ -120,35 +122,398 @@ client.on('message', message => {
         message.react("🟩");
         message.react("🟧");
         message.react("🟪");
+        message.react("😀");
+        message.react("😁");
 
         const messageClient = message.client;
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
-          if (!user.bot && reaction.emoji.name === "👍") {
+          if (!user.bot && reaction.emoji.name === "⚫") {
 
-            const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
+            const role = message.guild.roles.cache.find((role) => role.name === "Javascript");
             console.log(role);
-            const member = message.guild.members.cache.find((member) => member.id === user.id );
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
 
-            
 
-            if (!member.roles.cache.has("Github Team") && role) {
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🔵") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Python");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟤") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Java");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟢") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "HTML-CSS");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟠") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "C-sharp");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟣") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "PHP");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🔴") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Kotlin");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "⚪") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Rust");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟡") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Haskell");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟦") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Lua");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟩") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Assembly");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟧") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "GO-lang");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟪") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Ruby");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "😀") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "C-lang");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
+              member.roles.add(role);
+            }
+          }
+
+          if (!user.bot && reaction.emoji.name === "😁") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Elixir");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+            if (!member.roles.cache.has(role.name) && role) {
               member.roles.add(role);
             }
           }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
-          if (!user.bot && reaction.emoji.name === "👍") {
+          if (!user.bot && reaction.emoji.name === "⚫") {
 
-            const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
-            const member = message.guild.members.cache.find((member) => member.id === user.id );
-
+            const role = message.guild.roles.cache.find((role) => role.name === "Javascript");
             console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
 
-            
+
+
+
             member.roles.remove(role);
-            
+          }
+
+          if (!user.bot && reaction.emoji.name === "🔵") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Python");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟤") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Java");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟢") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "HTML-CSS");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟠") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "C-sharp");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟣") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "PHP");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🔴") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Kotlin");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "⚪") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Rust");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟡") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Haskell");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟦") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Lua");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟩") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Assembly");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟧") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "GO-lang");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "🟪") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Ruby");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+
+          }
+
+          if (!user.bot && reaction.emoji.name === "😀") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "C-lang");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
+          }
+
+          if (!user.bot && reaction.emoji.name === "😁") {
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Elixir");
+            console.log(role);
+            const member = message.guild.members.cache.find((member) => member.id === user.id);
+
+
+
+
+            member.roles.remove(role);
           }
         });
       });
