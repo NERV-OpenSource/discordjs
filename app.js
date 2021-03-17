@@ -102,17 +102,19 @@ client.on('message', message => {
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
           if (!user.bot) {
-            let githubTeamRole = message.guild.roles.cache.find(role => role.name === "Github Team")
-            const dUser = message.guild.members.cache.get(user.id);
-            dUser.roles.add(githubTeamRole).catch(console.error);
+            let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
+            const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
+            member.roles.add(githubTeamRole).catch(console.error);
+            reaction.message.channel.send(`Cargo ${githubTeamRole.name} dado para ${member.name}`);
           }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
           if (!user.bot) {
-            let githubTeamRole = message.guild.roles.cache.find(role => role.name === "Github Team")
-            const dUser = message.guild.members.cache.get(user.id);
-            dUser.roles.remove(githubTeamRole).catch(console.error);
+            let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
+            const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
+            member.roles.remove(githubTeamRole).catch(console.error);
+            reaction.message.channel.send(`Cargo ${githubTeamRole.name} retirado de ${member.name}`);
           }
         });
       });
