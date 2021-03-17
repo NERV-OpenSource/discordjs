@@ -101,20 +101,20 @@ client.on('message', message => {
         const messageClient = message.client;
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
-          if (!user.bot) {
+          if (!user.bot && reaction.emoji.name === "👍") {
             let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
             const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
-            member.roles.add(githubTeamRole).catch(console.error);
             reaction.message.channel.send(`Cargo ${githubTeamRole.name} dado para ${member.name}`);
+            member.roles.add(githubTeamRole).catch(console.error);
           }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
-          if (!user.bot) {
+          if (!user.bot && reaction.emoji.name === "👍") {
             let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
             const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
-            member.roles.remove(githubTeamRole).catch(console.error);
             reaction.message.channel.send(`Cargo ${githubTeamRole.name} retirado de ${member.name}`);
+            member.roles.remove(githubTeamRole).catch(console.error);
           }
         });
       });
