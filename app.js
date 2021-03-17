@@ -95,9 +95,8 @@ client.on('message', message => {
       }
 
       message.channel.send(emojiText).then((message) => {
-        for (const key in emojis) {
-          message.react("\\:thumbsup:");
-        }
+        message.react("👍");
+        message.react("👎");
       });
     }
   } catch (ex) {
