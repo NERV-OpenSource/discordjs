@@ -537,7 +537,7 @@ client.on('message', message => {
         "!play <url youtube>: Reprodiz o audio do vídeo requisitado no canal de voz" +
         "!stop: Para o reprodução e saí do canal de voz" +
         "!roles: Verifica e pega cargos no servidor" +
-        +"```"
+        +"```" +
       "")
     }
   } catch (ex) {
