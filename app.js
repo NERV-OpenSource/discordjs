@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const ytdl = require("ytdl-core-discord");
 require('dotenv/config');
 
 const client = new Discord.Client();
@@ -16,6 +17,19 @@ client.on('message', message => {
 
   if (command === "ping") {
     message.reply("Pong!");
+  }
+
+  if (command === "play") {
+    const voice = message.member.voice;
+
+    if (!voice.channelID) {
+      message.reply("É preciso estar em um canal de voz para utilizar esse comando.");
+      return;
+    }
+
+    voice.channel.join().then(async (connection) => {
+      connection.play(await ytdl(arguments[0]), { type: 'opus' });
+    });
   }
 })
 
