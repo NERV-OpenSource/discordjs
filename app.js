@@ -87,7 +87,7 @@ client.on('message', message => {
 
     let emojiText = '';
     for (const key in emojis) {
-      reactions.push(emoji);
+      reactions.push(key);
 
       const role = emojis[key];
       emojiText += `${key} = ${role}\n`
