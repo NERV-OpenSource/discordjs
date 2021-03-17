@@ -530,15 +530,29 @@ client.on('message', message => {
     }
 
     if (command == "help") {
-      message.reply(""+
-        "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source\n"+
-        "Estes são os meus comandos no momento: "+
-        "```"+
-        "!play <url youtube>: Reprodiz o audio do vídeo requisitado no canal de voz" +
-        "!stop: Para o reprodução e saí do canal de voz" +
-        "!roles: Verifica e pega cargos no servidor" +
-        +"```" +
-      "")
+
+      message.reply({embed: {
+        color: 3066993,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "EVA Unit-00 ONLINE",
+        description: "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source",
+        fields: [{
+          name: '!play <url youtube>',
+          value: "Reprodiz o audio do vídeo requisitado no canal de voz"
+        },
+        {
+          name: '!stop',
+          value: "Para o reprodução e saí do canal de voz"
+        },
+        {
+          name: "!roles",
+          value: "Verifica e pega cargos no servidor"
+        }
+      ]
+      }})
     }
   } catch (ex) {
     message.reply("Ocorreu um erro interno, por favor relate isso aos moderadores.");
