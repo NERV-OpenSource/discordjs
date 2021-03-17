@@ -111,7 +111,7 @@ client.on('message', message => {
             
 
             if (!member.roles.cache.has("Github Team") && role) {
-              member.roles.add(role);
+              member.roles.add(role).catch(message.channel.send("Erro ao adicionar cargo."));
             }
           }
         });
@@ -125,8 +125,8 @@ client.on('message', message => {
 
             console.log(role);
 
-            if (member.roles.cache.has("Github Team") && role) {
-              member.roles.remove(role);
+            if (member.roles.cache.has(role.name) && role) {
+              member.roles.remove(role).catch(message.channel.send("Erro ao retirar cargo."));
             }
           }
         });
