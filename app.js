@@ -37,6 +37,17 @@ client.on('message', message => {
       connection.play(await ytdl(arguments[0]), { type: 'opus' });
     });
   }
+
+  if (command === "stop") {
+    const voice = message.member.voice;
+
+    if (!voice.channelID) {
+      message.reply("É preciso estar em um canal de voz para utilizar esse comando.");
+      return;
+    }
+
+    voice.channel.leave();
+  }
 })
 
 client.login(process.env.API_TOKEN);
