@@ -7,4 +7,4 @@ client.once('ready', () => {
   console.log('Iniciado com sucesso!');
 });
 
-client.login(process.env.TOKEN);
+client.login(process.env.API_TOKEN);
