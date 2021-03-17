@@ -103,12 +103,30 @@ client.on('message', message => {
         messageClient.on('messageReactionAdd', (reaction, user) => {
           if (!user.bot && reaction.emoji.name === "👍") {
             message.channel.send("Handsup");
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
+            const member = message.guild.members.cache.find((member) => member.id === user.id );
+
+            console.log(role);
+
+            if (!member.roles.cache.has("Github Team") && role) {
+              member.roles.add(role);
+            }
           }
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
           if (!user.bot && reaction.emoji.name === "👍") {
             message.channel.send("Handsup removido");
+
+            const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
+            const member = message.guild.members.cache.find((member) => member.id === user.id );
+
+            console.log(role);
+
+            if (member.roles.cache.has("Github Team") && role) {
+              member.roles.remove(role);
+            }
           }
         });
       });
