@@ -6,7 +6,7 @@ const client = new Discord.Client();
 let counter = {};
 
 const filter = (reaction, user) => {
-  return ['👍', '👎'].includes(reaction.emoji.name);
+  return ['👍', '👎'].includes(reaction.emoji.name) && !user.bot;
 };
 
 client.once('ready', () => {
@@ -98,10 +98,14 @@ client.on('message', message => {
         message.react("👍");
         message.react("👎");
 
-        const collector = message.createReactionCollector(filter);
+        const collector = message.createReactionCollector(filter, { time: 15000 });
 
         collector.on('collect', (reaction, user) => {
           console.log(`Reação ${reaction.emoji.name} feita por ${user.tag}`);
+        });
+
+        collector.on('end', collected => {
+          console.log(`${collected.size} reações foram dadas`);
         })
       });
 
