@@ -7,4 +7,16 @@ client.once('ready', () => {
   console.log('Iniciado com sucesso!');
 });
 
+client.on('message', message => {
+  const prefix = process.env.PREFIX;
+  if (!message.content.startWith(prefix) || message.author.bot) return;
+
+  const arguments = message.content.slice(prefix.length).trim().split(' ');
+  const command = args.shift().toLowerCase();
+
+  if (command === "ping") {
+    message.reply("Pong!");
+  }
+})
+
 client.login(process.env.API_TOKEN);
