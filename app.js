@@ -19,6 +19,8 @@ client.on('message', message => {
       counter[message.author.id] += 1;
     }
 
+    message.reply(counter[message.author.id]);
+
     if (counter[message.author.id] >= 100 && !message.member.roles.cache.has(activeRole.id)) {
       message.member.roles.add(activeRole).then((member) => {
         message.reply("Parabéns, pela sua participação você ganhou um novo cargo!");
