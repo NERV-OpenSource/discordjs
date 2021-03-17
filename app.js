@@ -87,15 +87,16 @@ client.on('message', message => {
 
     let emojiText = '';
     for (const key in emojis) {
-      reactions.push(key);
+      emoji = message.guild.emojis.cache.find(emoji => emoji.name === 'thumbsup');
+      reactions.push(emoji);
 
       const role = emojis[key];
-      emojiText += `${key} = ${role}\n`
+      emojiText += `${emohu} = ${role}\n`
     }
 
     message.channel.send(emojiText).then((message) => {
-      message.react(client.emojis.find(emoji => emoji.name === "thumbsup"));
-      message.react(client.emojis.find(emoji => emoji.name === "thumbsdown"));
+      message.react(message.guild.emojis.cache.find(emoji => emoji.name === 'thumbsup'));
+      message.react(message.guild.emojis.cache.find(emoji => emoji.name === "thumbsdown"));
     });
   }
 })
