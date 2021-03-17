@@ -34,7 +34,7 @@ client.on("ready", () => {
 });
 
 client.on('message', async message => {
-  if (!message.content.startsWith(process.env.BOT_PREFIX) || message.author.bot) return;
+  if (!message.content.startsWith(process.env.PREFIX) || message.author.bot) return;
 
   // Moved to get the member object without check if is a command
   if (!message.member) message.member = await message.guild.fetchMember (message);
