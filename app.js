@@ -76,17 +76,25 @@ client.on('message', message => {
   }
 
   if (command === "roles") {
-    message.reply("👍, 👎").then((message) => {
-      message.awaitReactions(filter).then(collected => {
-        const reaction = collected.first();
+    const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === emojiName);
 
-        if (reaction.emoji.name === '👍') {
-          message.channel.send(":)");
-        } else {
-          message.channel.send(":(")
-        }
-      })
-    });
+    const emojis = {
+      thumbsUp: 'thumbsup',
+      thumbsDown: 'thumbsdown',
+    };
+
+    const reactions = [];
+
+    let emojiText = '';
+    for (const key in emojis) {
+      const emoji = getEmoji(key);
+      reactionIds.push(emoji);
+
+      const role = emojis[key];
+      emojiText += `${emoji} = ${role}\n`
+    }
+
+    message.channel.send(emojiText);
   }
 })
 
