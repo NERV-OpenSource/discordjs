@@ -81,9 +81,9 @@ client.on('message', message => {
         const reaction = collected.first();
 
         if (reaction.emoji.name === '👍') {
-          message.reply(":)");
+          message.channel.send(":)");
         } else {
-          message.reply(":(")
+          message.channel.send(":(")
         }
       })
     });
