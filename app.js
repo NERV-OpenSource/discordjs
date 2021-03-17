@@ -102,6 +102,7 @@ client.on('message', message => {
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
           if (!user.bot && reaction.emoji.name === "👍") {
+            message.channel.send("Handsup");
             let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
             const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
             reaction.message.channel.send(`Cargo ${githubTeamRole.name} dado para ${member.name}`);
@@ -111,7 +112,8 @@ client.on('message', message => {
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
           if (!user.bot && reaction.emoji.name === "👍") {
-            let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team")
+            message.channel.send("Handsup removido")
+            let githubTeamRole = reaction.message.guild.roles.cache.find(role => role.name === "Github Team");
             const member = reaction.message.guild.roles.cache.find(member => member.id === user.id);
             reaction.message.channel.send(`Cargo ${githubTeamRole.name} retirado de ${member.name}`);
             member.roles.remove(githubTeamRole).catch(console.error);
