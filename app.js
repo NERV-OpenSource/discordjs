@@ -11,6 +11,7 @@ client.once('ready', () => {
 
 client.on('message', message => {
   const activeRole = message.guild.roles.cache.find(role => role.name = "Active");
+  if (message.author.bot) return;
 
   if (activeRole) {
     if (!counter[message.author.id]) {
