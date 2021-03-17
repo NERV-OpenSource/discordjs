@@ -12,7 +12,7 @@ client.on('message', message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const arguments = message.content.slice(prefix.length).trim().split(' ');
-  const command = args.shift().toLowerCase();
+  const command = arguments.shift().toLowerCase();
 
   if (command === "ping") {
     message.reply("Pong!");
