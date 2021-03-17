@@ -3,7 +3,7 @@ const ytdl = require("ytdl-core-discord");
 require('dotenv/config');
 
 const client = new Discord.Client();
-let counter;
+let counter = {};
 
 client.once('ready', () => {
   console.log('Iniciado com sucesso!');
