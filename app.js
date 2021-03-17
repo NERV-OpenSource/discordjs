@@ -5,6 +5,10 @@ require('dotenv/config');
 const client = new Discord.Client();
 let counter = {};
 
+const filter = (reaction, user) => {
+  return ['👍', '👎'].includes(reaction.emoji.name);
+};
+
 client.once('ready', () => {
   console.log('Iniciado com sucesso!');
 });
@@ -69,6 +73,20 @@ client.on('message', message => {
     }
 
     voice.channel.leave();
+  }
+
+  if (command === "roles") {
+    message.reply("👍, 👎").then((message) => {
+      message.awaitReactions(filter).then(collected => {
+        const reaction = collected.first();
+
+        if (reaction.emoji.name === '👍') {
+          message.reply(":)");
+        } else {
+          message.reply(":(")
+        }
+      })
+    });
   }
 })
 
