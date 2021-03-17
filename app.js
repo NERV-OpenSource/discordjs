@@ -76,7 +76,7 @@ client.on('message', message => {
   }
 
   if (command === "roles") {
-    const getEmoji = emojiName => client.emojis.find(emoji => emoji.name === emojiName);
+    const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === emojiName);
 
     const emojis = {
       thumbsup: 'Thumbs Up',
@@ -87,7 +87,7 @@ client.on('message', message => {
 
     let emojiText = '';
     for (const key in emojis) {
-      const emoji = getEmoji(key);
+      const emoji = client.emojis.cache.find(emojeC => emojeC.name === key);
       reactions.push(emoji);
 
       const role = emojis[key];
