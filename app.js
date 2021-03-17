@@ -65,7 +65,7 @@ client.on('message', message => {
       });
     }
 
-    if (command === "stop") {
+    if (command === "leave") {
       const voice = message.member.voice;
 
       if (!voice.channelID) {
@@ -544,7 +544,7 @@ client.on('message', message => {
           value: "Reprodiz o audio do vídeo requisitado no canal de voz"
         },
         {
-          name: '!stop',
+          name: '!leave',
           value: "Para o reprodução e saí do canal de voz"
         },
         {
