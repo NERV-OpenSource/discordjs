@@ -1,0 +1,24 @@
+{
+  "name": "discordjs",
+  "version": "1.0.0",
+  "description": "Discord Bot EVA-00",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NERV-OpenSource/discordjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NERV-OpenSource/discordjs/issues"
+  },
+  "homepage": "https://github.com/NERV-OpenSource/discordjs#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "ytdl-core-discord": "^1.2.5"
+  }
+}
