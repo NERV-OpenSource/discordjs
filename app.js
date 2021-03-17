@@ -104,7 +104,7 @@ client.on('message', message => {
           if (!user.bot && reaction.emoji.name === "👍") {
             message.channel.send("Handsup");
 
-            const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
+            const role = message.guild.roles.cache.get("819220852913602590");
             console.log(role);
             const member = message.guild.members.cache.find((member) => member.id === user.id );
 
