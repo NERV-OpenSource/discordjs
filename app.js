@@ -98,6 +98,16 @@ client.on('message', message => {
         message.react("👍");
         message.react("👎");
       });
+
+      message.awaitReactions(filter).then(collected => {
+        const reaction = collected.first();
+
+        if (reaction.emoji.name === "👍") {
+          message.channel.send('Thumbsup');
+        } else {
+          message.channel.send("Thumbsdown");
+        }
+      })
     }
   } catch (ex) {
     message.reply("Ocorreu um erro interno, por favor relate isso aos moderadores.");
