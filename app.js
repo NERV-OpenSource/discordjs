@@ -105,9 +105,10 @@ client.on('message', message => {
             message.channel.send("Handsup");
 
             const role = message.guild.roles.cache.find((role) => role.name === "Github Team");
+            console.log(role);
             const member = message.guild.members.cache.find((member) => member.id === user.id );
 
-            console.log(role);
+            
 
             if (!member.roles.cache.has("Github Team") && role) {
               member.roles.add(role);
