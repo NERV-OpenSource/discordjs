@@ -54,7 +54,7 @@ client.on("ready", () => {
   console.log(`Estou conectado como ${client.user.username}`);
 });
 
-client.on('message', message => {
+client.on('message', async message => {
   if (!message.content.startsWith(process.env.BOT_PREFIX) || message.author.bot) return;
 
   // Moved to get the member object without check if is a command
