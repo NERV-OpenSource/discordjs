@@ -94,8 +94,8 @@ client.on('message', message => {
     }
 
     message.channel.send(emojiText).then((message) => {
-      message.react(':thumbsup:');
-      message.react(':thumbsdown:');
+      message.react(client.emojis.find(emoji => emoji.name === "thumbsup"));
+      message.react(client.emojis.find(emoji => emoji.name === "thumbsdown"));
     });
   }
 })
