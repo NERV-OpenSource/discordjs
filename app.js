@@ -80,8 +80,20 @@ client.on('message', message => {
       const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === emojiName);
 
       const emojis = {
-        ":thumbsup:": 'Thumbs Up',
-        ":thumbsdown:": 'Thumbs Down',
+        ":black_circle:": 'Javascript',
+        ":blue_circle:": 'Python',
+        ":brown_circle:": 'Java',
+        ":green_circle:": 'HTML-CSS',
+        ":orange_circle:": 'C-sharp',
+        ":purple_circle:": 'PHP',
+        ":red_circle:": 'Kotlin',
+        ":white_circle:": 'Rust',
+        ":yellow_circle:": 'Haskell',
+        ":blue_square": 'Lua',
+        ":brown_square:": 'Assembly',
+        ":green_square:": 'GO-lang',
+        ":orange_square:": 'Ruby',
+        ":purple_square:": 'Elixir',
       };
 
       const reactions = [];
@@ -95,8 +107,19 @@ client.on('message', message => {
       }
 
       message.channel.send(emojiText).then((message) => {
-        message.react("👍");
-        message.react("👎");
+        message.react("⚫");
+        message.react("🔵");
+        message.react("🟤");
+        message.react("🟢");
+        message.react("🟠");
+        message.react("🟣");
+        message.react("🔴");
+        message.react("⚪");
+        message.react("🟡");
+        message.react("🟦");
+        message.react("🟩");
+        message.react("🟧");
+        message.react("🟪");
 
         const messageClient = message.client;
 
