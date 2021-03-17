@@ -77,25 +77,33 @@ client.on('message', message => {
     }
 
     if (command === "roles") {
-      const getEmoji = emojiName => client.emojis.cache.find(emoji => emoji.name === emojiName);
+      const emojiIcons = {
+        js: message.guild.emojis.cache.find(emoji => emoji.name === "js"),
+        python: message.guild.emojis.cache.find(emoji => emoji.name === "python"),
+        java: message.guild.emojis.cache.find(emoji => emoji.name === "java"),
+        html: message.guild.emojis.cache.find(emoji => emoji.name === "html"),
+        php: message.guild.emojis.cache.find(emoji => emoji.name === "php"),
+        rust: message.guild.emojis.cache.find(emoji => emoji.name === "r_"),
+        ruby: message.guild.emojis.cache.find(emoji => emoji.name === "rubyonrails"),
+      }
 
       const emojis = {
-        ":black_circle:": 'Javascript',
-        ":blue_circle:": 'Python',
-        ":brown_circle:": 'Java',
-        ":green_circle:": 'HTML-CSS',
-        ":orange_circle:": 'C-sharp',
-        ":purple_circle:": 'PHP',
-        ":red_circle:": 'Kotlin',
-        ":white_circle:": 'Rust',
-        ":yellow_circle:": 'Haskell',
-        ":blue_square:": 'Lua',
-        ":brown_square:": 'Assembly',
-        ":green_square:": 'GO-lang',
-        ":orange_square:": 'Ruby',
-        ":purple_square:": 'Elixir',
-        ":grinning:": 'C-lang',
-        ":grin:": 'Elixir'
+        "Javascript": emojiIcons.js,
+        "Python": emojiIcons.python,
+        "Java": emojiIcons.java,
+        "HTML-CSS": emojiIcons.html,
+        'C-sharp': ":orange_circle:",
+        'PHP': emojiIcons.php,
+        'Kotlin': ":red_circle:",
+        'Rust': emojiIcons.rust,
+        'Haskell': ":yellow_circle:",
+        'Lua': ":blue_square:",
+        'Assembly': ":brown_square:",
+        'GO-lang': ":green_square:",
+        'Ruby': emojiIcons.ruby,
+        'Elixir': ":purple_square:",
+        'C-lang': ":grinning:",
+        'Elixir': ":grin:",
       };
 
       const reactions = [];
@@ -109,18 +117,18 @@ client.on('message', message => {
       }
 
       message.channel.send(emojiText).then((message) => {
-        message.react("⚫");
-        message.react("🔵");
-        message.react("🟤");
-        message.react("🟢");
+        message.react(emojiIcons.js.id);
+        message.react(emojiIcons.python.id);
+        message.react(emojiIcons.java.id);
+        message.react(emojiIcons.html.id);
         message.react("🟠");
-        message.react("🟣");
+        message.react(emojiIcons.php.id);
         message.react("🔴");
-        message.react("⚪");
+        message.react(emojiIcons.rust.id);
         message.react("🟡");
         message.react("🟦");
         message.react("🟩");
-        message.react("🟧");
+        message.react(emojiIcons.ruby.id);
         message.react("🟪");
         message.react("😀");
         message.react("😁");
@@ -128,7 +136,7 @@ client.on('message', message => {
         const messageClient = message.client;
 
         messageClient.on('messageReactionAdd', (reaction, user) => {
-          if (!user.bot && reaction.emoji.name === "⚫") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.js.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Javascript");
             console.log(role);
@@ -141,7 +149,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "🔵") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.python.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Python");
             console.log(role);
@@ -154,7 +162,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "🟤") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.java.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Java");
             console.log(role);
@@ -167,7 +175,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "🟢") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.html.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "HTML-CSS");
             console.log(role);
@@ -193,7 +201,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "🟣") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.php.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "PHP");
             console.log(role);
@@ -219,7 +227,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "⚪") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.rust.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Rust");
             console.log(role);
@@ -284,7 +292,7 @@ client.on('message', message => {
             }
           }
 
-          if (!user.bot && reaction.emoji.name === "🟪") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.ruby) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Ruby");
             console.log(role);
@@ -325,7 +333,7 @@ client.on('message', message => {
         });
 
         messageClient.on('messageReactionRemove', (reaction, user) => {
-          if (!user.bot && reaction.emoji.name === "⚫") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.js) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Javascript");
             console.log(role);
@@ -337,7 +345,7 @@ client.on('message', message => {
             member.roles.remove(role);
           }
 
-          if (!user.bot && reaction.emoji.name === "🔵") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.python.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Python");
             console.log(role);
@@ -349,7 +357,7 @@ client.on('message', message => {
             member.roles.remove(role);
           }
 
-          if (!user.bot && reaction.emoji.name === "🟤") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.java.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Java");
             console.log(role);
@@ -362,7 +370,7 @@ client.on('message', message => {
 
           }
 
-          if (!user.bot && reaction.emoji.name === "🟢") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.html.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "HTML-CSS");
             console.log(role);
@@ -388,7 +396,7 @@ client.on('message', message => {
 
           }
 
-          if (!user.bot && reaction.emoji.name === "🟣") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.rust.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "PHP");
             console.log(role);
@@ -414,7 +422,7 @@ client.on('message', message => {
 
           }
 
-          if (!user.bot && reaction.emoji.name === "⚪") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.rust.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Rust");
             console.log(role);
@@ -479,7 +487,7 @@ client.on('message', message => {
 
           }
 
-          if (!user.bot && reaction.emoji.name === "🟪") {
+          if (!user.bot && reaction.emoji.name === emojiIcons.ruby.name) {
 
             const role = message.guild.roles.cache.find((role) => role.name === "Ruby");
             console.log(role);
