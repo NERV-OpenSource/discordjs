@@ -97,8 +97,8 @@ client.on('message', message => {
       message.channel.send(emojiText).then((message) => {
         message.react("👍");
         message.react("👎");
-        
-        message.awaitReactions(filter).then(collected => {
+
+        message.awaitReactions(filter, { max: 1, time: 60000 }).then(collected => {
           const reaction = collected.first();
   
           if (reaction.emoji.name === "👍") {
