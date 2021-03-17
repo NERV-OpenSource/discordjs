@@ -96,7 +96,7 @@ client.on('message', message => {
 
       message.channel.send(emojiText).then((message) => {
         for (const key in emojis) {
-          message.react("\\"+key);
+          message.react("\\:thumbsup:");
         }
       });
     }
