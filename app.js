@@ -3,12 +3,29 @@ const ytdl = require("ytdl-core-discord");
 require('dotenv/config');
 
 const client = new Discord.Client();
+let counter;
 
 client.once('ready', () => {
   console.log('Iniciado com sucesso!');
 });
 
 client.on('message', message => {
+  const activeRole = message.guild.roles.cache.find(role => role.name = "Active");
+
+  if (activeRole) {
+    if (!counter[message.author.id]) {
+      counter[message.author.id] = 1;
+    } else {
+      counter[message.author.id] += 1;
+    }
+
+    if (counter[message.author.id] >= 100 && !message.member.roles.cache.has(activeRole.id)) {
+      message.member.roles.add(activeRole).then((member) => {
+        message.reply("Parabéns, pela sua participação você ganhou um novo cargo!");
+      }).catch(console.error);
+    }
+  }
+
   const prefix = process.env.PREFIX;
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -35,7 +52,7 @@ client.on('message', message => {
 
     voice.channel.join().then(async (connection) => {
       try {
-      connection.play(await ytdl(arguments[0]), { type: 'opus' });
+        connection.play(await ytdl(arguments[0]), { type: 'opus' });
       } catch (ex) {
         message.reply("Erro ao reproduzir mídia");
       }
