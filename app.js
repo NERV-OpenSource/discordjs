@@ -96,9 +96,20 @@ client.on('message', message => {
     }
 
     if (command === "resetQueue") {
-      queue.forEach(() => {
+      const voice = message.member.voice;
+
+      if (!voice.channelID) {
+        message.reply("É preciso estar em um canal de voz para utilizar esse comando.");
+        return;
+      }
+
+      queue.forEach((url) => {
+        console.log(url);
         queue.pop();
       })
+
+      message.reply("Queue resetada.");
+      voice.channel.leave();
     }
 
     if (command === "roles") {
