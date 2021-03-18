@@ -62,12 +62,12 @@ client.on('message', message => {
         console.log(queue);
         voice.channel.join().then(async (connection) => {
           try {
-            while (queue.length > 0) {
-              connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
+            queue.forEach((songURL) => {
+              connection.play(await ytdl(songURL), { type: 'opus' }).on("finish", () => {
                 console.log(queue)
-                queue = queue.filter(songURL => songURL != URL)
+                queue = queue.filter(song => song != songURL)
               });
-            }
+            })
           } catch (ex) {
             message.reply("Erro ao reproduzir mídia");
             console.error(ex);
