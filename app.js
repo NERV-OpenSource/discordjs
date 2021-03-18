@@ -575,7 +575,7 @@ client.on('message', message => {
             icon_url: client.user.avatarURL
           },
           title: "EVA Unit-00 ONLINE",
-          description: "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source",
+          description: "Olá, sou a EVA Unit-00 sou a unidade de desenvolvimento oficial da NERV Open Source.",
           fields: [{
             name: '!play <url youtube>',
             value: "Reprodiz o audio do vídeo requisitado no canal de voz"
