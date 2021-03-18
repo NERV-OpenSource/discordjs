@@ -104,8 +104,7 @@ client.on('message', message => {
         return;
       }
 
-      queue.forEach((url) => {
-        console.log(url);
+      queue.forEach(() => {
         queue.pop();
       })
 
@@ -586,7 +585,7 @@ client.on('message', message => {
             value: "Para o reprodução e saí do canal de voz"
           },
           {
-            name: "!resetQueue",
+            name: "!resetqueue",
             value: "Limpa a queue de reprodução"
           },
           {
