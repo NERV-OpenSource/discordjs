@@ -4,6 +4,7 @@ require('dotenv/config');
 
 const client = new Discord.Client();
 let counter = {};
+let queue = [];
 
 const filter = (reaction, user) => {
   return ['👍', '👎'].includes(reaction.emoji.name) && !user.bot;
@@ -56,11 +57,16 @@ client.on('message', message => {
         return;
       }
 
+      queue.push(URL);
       voice.channel.join().then(async (connection) => {
-        try {
-          connection.play(await ytdl(arguments[0]), { type: 'opus' });
-        } catch (ex) {
-          message.reply("Erro ao reproduzir mídia");
+        while (queue.length > 0) {
+          try {
+            connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
+              queue = queue.filter(songURL => songURL != URL)
+            });
+          } catch (ex) {
+            message.reply("Erro ao reproduzir mídia");
+          }
         }
       });
     }
@@ -531,28 +537,30 @@ client.on('message', message => {
 
     if (command == "help") {
 
-      message.reply({embed: {
-        color: 3066993,
-        author: {
-          name: client.user.username,
-          icon_url: client.user.avatarURL
-        },
-        title: "EVA Unit-00 ONLINE",
-        description: "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source",
-        fields: [{
-          name: '!play <url youtube>',
-          value: "Reprodiz o audio do vídeo requisitado no canal de voz"
-        },
-        {
-          name: '!leave',
-          value: "Para o reprodução e saí do canal de voz"
-        },
-        {
-          name: "!roles",
-          value: "Verifica e pega cargos no servidor"
+      message.reply({
+        embed: {
+          color: 3066993,
+          author: {
+            name: client.user.username,
+            icon_url: client.user.avatarURL
+          },
+          title: "EVA Unit-00 ONLINE",
+          description: "Olá, sou a EVA Unit-00, bot oficial da NERV Open Source",
+          fields: [{
+            name: '!play <url youtube>',
+            value: "Reprodiz o audio do vídeo requisitado no canal de voz"
+          },
+          {
+            name: '!leave',
+            value: "Para o reprodução e saí do canal de voz"
+          },
+          {
+            name: "!roles",
+            value: "Verifica e pega cargos no servidor"
+          }
+          ]
         }
-      ]
-      }})
+      })
     }
   } catch (ex) {
     message.reply("Ocorreu um erro interno, por favor relate isso aos moderadores.");
