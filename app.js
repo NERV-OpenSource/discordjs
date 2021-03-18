@@ -60,9 +60,9 @@ client.on('message', message => {
       if (!queue[0]) {
         queue.push(URL);
         console.log(queue);
-        voice.channel.join().then(async (connection) => {
+        voice.channel.join().then((connection) => {
           try {
-            queue.forEach((songURL) => {
+            queue.forEach(async (songURL) => {
               connection.play(await ytdl(songURL), { type: 'opus' }).on("finish", () => {
                 console.log(queue)
                 queue = queue.filter(song => song != songURL)
