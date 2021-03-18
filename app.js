@@ -96,7 +96,7 @@ client.on('message', message => {
     }
 
     if (command === "resetQueue") {
-      queue = [];
+      queue.length = 0;
     }
 
     if (command === "roles") {
