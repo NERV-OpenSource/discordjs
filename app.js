@@ -6,7 +6,7 @@ const client = new Discord.Client();
 let counter = {};
 let queue = [];
 
-function playQueue(connection) {
+async function playQueue(connection) {
     connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
       console.log(queue)
       queue = queue.filter(song => song != songURL)
