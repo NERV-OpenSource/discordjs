@@ -96,6 +96,7 @@ client.on('message', message => {
     }
 
     if (command === "resetQueue") {
+      console.log("Resetando queue");
       const voice = message.member.voice;
 
       if (!voice.channelID) {
