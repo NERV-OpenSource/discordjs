@@ -96,7 +96,9 @@ client.on('message', message => {
     }
 
     if (command === "resetQueue") {
-      queue.length = 0;
+      queue.forEach(() => {
+        queue.pop();
+      })
     }
 
     if (command === "roles") {
