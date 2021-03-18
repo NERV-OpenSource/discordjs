@@ -58,19 +58,21 @@ client.on('message', message => {
       }
 
       queue.push(URL);
-      voice.channel.join().then(async (connection) => {
-        try {
-          while (queue.length > 0) {
-            connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
-              console.log(queue)
-              queue = queue.filter(songURL => songURL != URL)
-            });
+      if (!queue[0]) {
+        voice.channel.join().then(async (connection) => {
+          try {
+            while (queue.length > 0) {
+              connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
+                console.log(queue)
+                queue = queue.filter(songURL => songURL != URL)
+              });
+            }
+          } catch (ex) {
+            message.reply("Erro ao reproduzir mídia");
+            console.error(ex);
           }
-        } catch (ex) {
-          message.reply("Erro ao reproduzir mídia");
-          console.error(ex);
-        }
-      });
+        });
+      }
     }
 
     if (command === "leave") {
