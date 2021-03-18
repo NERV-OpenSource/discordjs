@@ -10,10 +10,10 @@ async function playQueue(connection) {
     connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
       console.log(queue)
       queue = queue.filter(song => song != songURL)
+      if (queue.length > 0) {
+        playQueue(connection);
+      }
     });  
-    if (queue.length > 0) {
-      playQueue(connection);
-    }
 }
 
 const filter = (reaction, user) => {
