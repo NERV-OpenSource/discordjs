@@ -6,6 +6,16 @@ const client = new Discord.Client();
 let counter = {};
 let queue = [];
 
+function playQueue(connection) {
+    connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
+      console.log(queue)
+      queue = queue.filter(song => song != songURL)
+    });  
+    if (queue.length > 0) {
+      playQueue(connection);
+    }
+}
+
 const filter = (reaction, user) => {
   return ['👍', '👎'].includes(reaction.emoji.name) && !user.bot;
 };
@@ -62,12 +72,7 @@ client.on('message', message => {
         console.log(queue);
         voice.channel.join().then((connection) => {
           try {
-            queue.forEach(async (songURL) => {
-              connection.play(await ytdl(songURL), { type: 'opus' }).on("finish", () => {
-                console.log(queue)
-                queue = queue.filter(song => song != songURL)
-              });
-            })
+            playQueue(connection);
           } catch (ex) {
             message.reply("Erro ao reproduzir mídia");
             console.error(ex);
