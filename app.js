@@ -61,7 +61,7 @@ client.on('message', message => {
       voice.channel.join().then(async (connection) => {
         while (queue.length > 0) {
           try {
-            connection.play(await ytdl(queue[0]), { type: 'opus' }).on("finish", () => {
+            connection.play(await ytdl(queue[0]), { type: 'opus' }).on("start", () => {
               queue = queue.filter(songURL => songURL != URL)
             });
           } catch (ex) {
