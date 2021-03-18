@@ -59,6 +59,7 @@ client.on('message', message => {
 
       if (!queue[0]) {
         queue.push(URL);
+        console.log(queue);
         voice.channel.join().then(async (connection) => {
           try {
             while (queue.length > 0) {
@@ -74,6 +75,7 @@ client.on('message', message => {
         });
       } else {
         queue.push(URL);
+        console.log(queue);
       }
     }
 
