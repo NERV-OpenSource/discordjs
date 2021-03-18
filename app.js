@@ -90,6 +90,10 @@ client.on('message', message => {
       voice.channel.leave();
     }
 
+    if (command === "resetQueue") {
+      queue = [];
+    }
+
     if (command === "roles") {
       const emojiIcons = {
         js: message.guild.emojis.cache.find(emoji => emoji.name === "js"),
@@ -561,6 +565,10 @@ client.on('message', message => {
           {
             name: '!leave',
             value: "Para o reprodução e saí do canal de voz"
+          },
+          {
+            name: "!resetQueue",
+            value: "Limpa a queue de reprodução"
           },
           {
             name: "!roles",
