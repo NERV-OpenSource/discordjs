@@ -565,6 +565,16 @@ client.on('message', message => {
 
     }
 
+    if (command === "evaseries") {
+      const userToAdd = message.mentions.users.first();
+
+      const user = message.guild.members.cache.find((member) => member.id === userToAdd.id);
+      const venusRole = message.guild.roles.cache.find((role) => role.name === "N.E. #2 - Venus");
+
+      user.roles.add(venusRole);
+      message.reply(`Bem vindo ao evento Venus, ${userToAdd.username}`);
+    }
+
     if (command == "help") {
 
       message.reply({
