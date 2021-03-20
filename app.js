@@ -571,7 +571,7 @@ client.on('message', message => {
 
       const nervEmoji = message.guild.emojis.cache.find(emoji => emoji.name === "nerv");
 
-      message.channel.send(`Iniciando protocolo venus...\nIniciado, reaja a essa mensagem para entrar no evento!`).then((message) => {
+      message.channel.send(`Iniciando ... PROTOCOLO V.E.N.U.S.\nIniciado! Reaja a essa mensagem para garantir seu acesso ao evento.`).then((message) => {
         message.react(nervEmoji);
 
         message.client.on('messageReactionAdd', (reaction, user) => {
